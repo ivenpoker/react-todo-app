@@ -28,7 +28,7 @@ class App extends Component {
 				</div>
 				<div className="m-5">
 
-					<div className="card m-auto ml-2 mr-2 text-dark mb-3" style={{maxWidth: "30rem"}}>
+					<div className="card m-auto ml-2 mr-2 text-dark mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form>
 							<div className="card-header">
 								<div className="text-center">
