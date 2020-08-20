@@ -61,7 +61,7 @@ class App extends Component {
 										</button>
 									</div>
 									<div className="col-sm-6">
-										<button className="btn btn-block btn-primary">
+										<button className="btn btn-block btn-outline-light">
 											Sign up
 										</button>
 									</div>
