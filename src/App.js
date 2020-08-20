@@ -1,5 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import appIcon from "./images/icons/icons8-list-64.png"
+import appIcon from "./images/icons/icons8-list-64.png";
+import personIcon from "./images/icons/icons8-person-100.png"
 
 class App extends Component {
 
@@ -26,15 +27,15 @@ class App extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="m-5">
+				<div className="">
 
-					<div className="card m-auto ml-2 mr-2 text-dark mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
+					<div className="card border-dark shadow-lg m-auto ml-2 mr-2 bg-dark text-white mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form>
 							<div className="card-header">
 								<div className="text-center">
 									<div className="row">
 										<div className="col-sm-12">
-											<img src="https://img.icons8.com/carbon-copy/64/000000/person-male.png"
+											<img src={personIcon}
 												 alt="User Profile Pic"/>
 										</div>
 									</div>
@@ -55,7 +56,7 @@ class App extends Component {
 							<div className="card-footer">
 								<div className="row">
 									<div className="col-sm-6 mb-2">
-										<button className="btn btn-block btn-dark">
+										<button className="btn btn-block btn-light">
 											Log in
 										</button>
 									</div>
@@ -67,7 +68,7 @@ class App extends Component {
 								</div>
 								<hr/>
 								<div className="text-center">
-									<a href='#' className="link text-dark small">Forgot password</a>
+									<a href='#' className="link text-white-50 small">Forgot password</a>
 								</div>
 							</div>
 						</form>
