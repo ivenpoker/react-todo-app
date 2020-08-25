@@ -70,7 +70,7 @@ class App extends Component {
 								<div className="text-center">
 									<a href='#' className="link text-white-50 small">Forgot password</a>
 								</div>
-								<div className="p-1 mt-3 text-center bg-secondary" style={{borderRadius: 8}}>
+								<div className="p-1 mt-3 text-center bg-secondary shadow" style={{borderRadius: 8}}>
 									<span className="small card-title">gitHub:</span>
 									<a className="ml-2 link text-dark small card-title" href="https://github.com/ivenpoker"
 									   rel="noopener noreferrer" target="_blank">@ivenpoker</a>
