@@ -31,24 +31,61 @@ const SignupModalContainer = (ChildComponent) =>
 			}));
 		}
 
+		// Render view for Signup
 		render() {
 			const {showModal} = this.state;
 			return (
 				<Fragment>
-					<Modal show={showModal} backdrop="static" keyboard={false}>
-						<Modal.Header>
-							<Modal.Title>Modal Title</Modal.Title>
-						</Modal.Header>
-						<Modal.Body>
-							I will not close if you don't click outside me. Don't even
-							try to press esacpe key.
-						</Modal.Body>
-						<Modal.Footer>
-							<Button variant="secondary" className="btn-sm" onClick={this.handleModalClose}>
-								close
-							</Button>
-							<Button variant="primary" className="btn-sm">Understood</Button>
-						</Modal.Footer>
+					<Modal show={showModal} backdrop="static" keyboard={false}
+						   aria-labelledby="contained-modal-title-vcenter"
+					       centered>
+						<form>
+							<div className="text-center mt-4 card-title text-black-50">
+								<h4 className="font-weight-bold">Sign Up</h4>
+							</div>
+							<Modal.Body>
+
+								<div className="mt-2">
+									<div className="col-sm-12">
+										<input type="text" className="form-control form-control-sm text-center shadow"
+											   placeholder="username"
+											   name="username"
+											   style={{padding: 20}}
+										/>
+									</div>
+									<div className="col-sm-12 mt-2">
+										<input type="password" className="form-control form-control-sm text-center shadow"
+											   placeholder="password"
+											   name="password"
+											   style={{padding: 20}}
+										/>
+									</div>
+								</div>
+
+							</Modal.Body>
+							<hr/>
+							<Fragment>
+								<div className="container mb-4">
+									<div className="row">
+										<div className="col-sm-12">
+											<Button variant="dark" className="btn-block shadow">Sign Up</Button>
+										</div>
+										<div className="col-sm-12 mt-2">
+											<Button variant="danger" className="btn-block shadow" onClick={this.handleModalClose}>
+												Cancel
+											</Button>
+										</div>
+									</div>
+								</div>
+							</Fragment>
+							<div className="p-3 bg-dark text-white-50">
+								<div className="text-center small">
+									<span>github: </span>
+									<a href="https://github.com/ivenpoker" className="link text-white">ivenpoker</a>
+									<span style={{borderLeft: "1px solid grey", marginLeft: 4}}> @{(new Date()).getFullYear()}</span>
+								</div>
+							</div>
+						</form>
 					</Modal>
 					<ChildComponent showModal={this.handleModalShow}/>
 				</Fragment>
