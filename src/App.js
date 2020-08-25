@@ -19,9 +19,9 @@ class App extends Component {
 					<div className="container">
 						<div className="row">
 							<div className="col-sm-12 text-center">
-								<img alt="Todo App Icon" src={appIcon}/>
+								<img className="shadow img-fluid" alt="Todo App Icon" src={appIcon}/>
 								<h5 className="mt-4">
-									<kbd className="p-2">TODO TASK MANAGEMENT APP</kbd>
+									<kbd className="p-2 shadow">TODO TASK MANAGEMENT APP</kbd>
 								</h5>
 							</div>
 						</div>
@@ -45,10 +45,10 @@ class App extends Component {
 
 								<div className="row">
 									<div className="col-sm-12">
-										<input type="text" className="form-control form-control-sm text-center p-3" placeholder="username"/>
+										<input type="text" className="form-control form-control-sm text-center p-3 shadow" placeholder="username"/>
 									</div>
 									<div className="col-sm-12 mt-2">
-										<input type="password" className="form-control form-control-sm text-center p-3" placeholder="password"/>
+										<input type="password" className="form-control form-control-sm text-center p-3 shadow" placeholder="password"/>
 									</div>
 								</div>
 
@@ -56,12 +56,12 @@ class App extends Component {
 							<div className="card-footer">
 								<div className="row">
 									<div className="col-sm-6 mb-2">
-										<button className="btn btn-block btn-light">
+										<button className="btn btn-block btn-light shadow">
 											Log in
 										</button>
 									</div>
 									<div className="col-sm-6">
-										<button className="btn btn-block btn-outline-light">
+										<button className="btn btn-block btn-outline-light shadow">
 											Sign up
 										</button>
 									</div>
@@ -69,6 +69,14 @@ class App extends Component {
 								<hr/>
 								<div className="text-center">
 									<a href='#' className="link text-white-50 small">Forgot password</a>
+								</div>
+								<div className="p-1 mt-3 text-center bg-secondary" style={{borderRadius: 8}}>
+									<span className="small card-title">gitHub:</span>
+									<a className="ml-2 link text-dark small card-title" href="https://github.com/ivenpoker"
+									   rel="noopener noreferrer" target="_blank">@ivenpoker</a>
+									<div className="card-subtitle mt-1">
+										@{(new Date()).getFullYear()}
+									</div>
 								</div>
 							</div>
 						</form>
