@@ -5,7 +5,7 @@
     -webkit-animation-name: loginAndSignupZoomIn;
     animation-name: loginAndSignupZoomIn;
     -webkit-animation-duration: 1s;
-    animation-duration: 1s;
+    animation-duration: 0.2s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -29,5 +29,3 @@
         opacity: 1;
     }
 }
-
-×

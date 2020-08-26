@@ -1,8 +1,10 @@
 import React, {Component, Fragment} from 'react';
 import appIcon from "../../images/icons/icons8-list-64.png";
-import personIcon from "../../images/icons/icons8-person-100.png"
+import personIcon from "../../images/icons/icons8-person-100.png";
 import {Button, Modal} from "react-bootstrap";
-import $ from "jquery";
+import {loginUser} from "../../redux";
+import signUserUp from "../../redux/userAuth/signupAuth/userSignupAuthActions";
+import {connect} from "react-redux";
 
 // This is a HOC for Signing up for new 'account' for the application.
 const SignupModalContainer = (ChildComponent) =>
@@ -50,6 +52,8 @@ const SignupModalContainer = (ChildComponent) =>
 										<input type="text" className="form-control form-control-sm text-center shadow"
 											   placeholder="username"
 											   name="username"
+											   required="required"
+											   disabled={this.props.userLogin.isAuthenticating ? "disabled" : ""}
 											   style={{padding: 20}}
 										/>
 									</div>
@@ -57,6 +61,7 @@ const SignupModalContainer = (ChildComponent) =>
 										<input type="password" className="form-control form-control-sm text-center shadow"
 											   placeholder="password"
 											   name="password"
+											   required="required"
 											   style={{padding: 20}}
 										/>
 									</div>
@@ -87,7 +92,7 @@ const SignupModalContainer = (ChildComponent) =>
 							</div>
 						</form>
 					</Modal>
-					<ChildComponent showModal={this.handleModalShow}/>
+					<ChildComponent {...this.props} showModal={this.handleModalShow}/>
 				</Fragment>
 			);
 		}
@@ -100,7 +105,8 @@ class LoginAndSignup extends Component {
 		this.state = {
 			userLoginData: {
 				username: '',
-				password: ''
+				password: '',
+				errorMessage: ''
 			}
 		}
 	}
@@ -131,10 +137,24 @@ class LoginAndSignup extends Component {
 
 	handleFormSubmit = (evt) => {
 		evt.preventDefault();
+
+		const {username, password} = this.state.userLoginData;
+		if (username.length === 0 || password === 0) {
+			this.setState((prevState) => ({
+				...prevState,
+				userLoginData: {
+					...prevState.userLoginData,
+					errorMessage: "Please provide username AND password."
+				}
+			}))
+		} else {
+			this.props.loginUser(username, password);
+		}
+
 	}
 
 	componentDidMount() {
-
+		console.log("LOGIN PROPS:", this.props)
 	}
 
 	render() {
@@ -152,7 +172,7 @@ class LoginAndSignup extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="">
+				<div className="loginAndSignupZoomIn">
 
 					<div className="card border-dark shadow-lg m-auto ml-2 mr-2 bg-dark text-white mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form onSubmit={this.handleFormSubmit}>
@@ -165,21 +185,48 @@ class LoginAndSignup extends Component {
 										</div>
 									</div>
 								</div>
+								{
+									this.props.userLogin.isAuthenticating ? (
+										<div className={""}>
+											<div className="sk-wave sk-center p-2 mt-2 bg-secondary" style={{borderRadius: 10}}>
+												<div className="sk-wave-rect"/>
+												<div className="sk-wave-rect"/>
+												<div className="sk-wave-rect"/>
+												<div className="sk-wave-rect"/>
+												<div className="sk-wave-rect"/>
+											</div>
+										</div>
+									) : null
+								}
 							</div>
 							<div className="card-body">
-
+								{
+									this.state.userLoginData.errorMessage ? (
+										<div className="alert alert-warning text-center font-weight-bold">
+											{this.state.userLoginData.errorMessage}
+										</div>
+									) : this.props.userLogin.error ? (
+										<div className="alert alert-danger text-center font-weight-bold">
+											{this.props.userLogin.error}
+										</div>
+									) : null
+								}
 								<div className="row">
 									<div className="col-sm-12">
-										<input type="text" className="form-control form-control-sm text-center p-3 shadow"
+										<input type="text" className="form-control form-control text-center p-3 shadow"
 											   placeholder="username"
 											   name="username"
+											   required="required"
+											   disabled={this.props.userLogin.isAuthenticating}
 											   onChange={this.handleLoginInputChange}
 										/>
 									</div>
 									<div className="col-sm-12 mt-2">
-										<input type="password" className="form-control form-control-sm text-center p-3 shadow"
+										<input type="password" className="form-control form-control text-center p-3 shadow"
 											   placeholder="password"
 											   name="password"
+											   required="required"
+											   disabled={this.props.userLogin.isAuthenticating}
 											   onChange={this.handleLoginInputChange}
 										/>
 									</div>
@@ -189,7 +236,7 @@ class LoginAndSignup extends Component {
 							<div className="card-footer">
 								<div className="row">
 									<div className="col-sm-6 mb-2">
-										<button className="btn btn-block btn-light shadow">
+										<button type="submit" className="btn btn-block btn-light shadow">
 											Log in
 										</button>
 									</div>
@@ -202,7 +249,7 @@ class LoginAndSignup extends Component {
 								</div>
 								<hr/>
 								<div className="text-center">
-									<a href='#' className="link text-white-50 small">Forgot password</a>
+									<a href='/' className="link text-white-50 small">Forgot password</a>
 								</div>
 								<div className="p-1 mt-3 text-center bg-secondary shadow" style={{borderRadius: 8}}>
 									<span className="small card-title">gitHub:</span>
@@ -223,4 +270,14 @@ class LoginAndSignup extends Component {
 	}
 }
 
-export default SignupModalContainer(LoginAndSignup);
+const mapStateToProps = (state) => ({
+	userLogin: state.login.userLogin,
+	userSignup: state.signup.userSignup
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	loginUser: (username, password) => dispatch(loginUser(username, password)),
+	signUserUp: (username, password) => dispatch(signUserUp(username, password))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupModalContainer(LoginAndSignup));
