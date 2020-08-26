@@ -1,2 +1,2 @@
 
-export {loginUser} from "./userAuth/userAuthActions"
+export {loginUser} from "./userAuth/loginAuth/userLoginAuthActions"
