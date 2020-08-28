@@ -8,7 +8,7 @@ import {
 
 const initialState = {
 	userLogin: {
-		username: '',
+		user: null,
 		isAuthenticating: false,
 		authenticated: false,
 		error: null
@@ -22,6 +22,7 @@ const loginReducer = createReducer(initialState, {
 			...prevState,
 			userLogin: {
 				...prevState.userLogin,
+				user: null,
 				isAuthenticating: true,
 				authenticated: false,
 				error: null
@@ -33,7 +34,7 @@ const loginReducer = createReducer(initialState, {
 			...prevState,
 			userLogin: {
 				...prevState.userLogin,
-				username: payload,
+				user: payload,
 				isAuthenticating: false,
 				authenticated: true,
 				error: null
@@ -45,6 +46,7 @@ const loginReducer = createReducer(initialState, {
 			...prevState,
 			userLogin: {
 				...prevState.userLogin,
+				user: null,
 				isAuthenticating: false,
 				authenticated: false,
 				error: payload

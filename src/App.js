@@ -1,19 +1,36 @@
 import React, {Component, Fragment} from 'react';
 import LoginAndSignup from "./components/loginAuth/LoginAndSignup";
-import {Provider} from "react-redux";
-import store from "./redux/store";
+import {connect} from "react-redux";
+import Home from "./components/home/userDashboard/Home";
+
 
 class App extends Component {
 
+	componentDidMount() {
+
+	}
+
 	render() {
 		return (
-			<Provider store={store}>
-				<Fragment>
-					<LoginAndSignup/>
-				</Fragment>
-			</Provider>
+			<Fragment>
+				{
+					this.props.userLogin.authenticated ? (
+						<Home/>
+					) : (
+						<LoginAndSignup/>
+					)
+				}
+			</Fragment>
 		);
 	}
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+	userLogin: state.login.userLogin
+});
+
+const mapDispatchToProps = () => ({
+	// Nothing for now.
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

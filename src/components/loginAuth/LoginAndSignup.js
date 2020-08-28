@@ -242,7 +242,7 @@ class LoginAndSignup extends Component {
 				<div className="loginAndSignupZoomIn">
 
 					<div className="card border-dark shadow-lg m-auto ml-2 mr-2 bg-dark text-white mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
-						<form onSubmit={this.handleFormSubmit}>
+						<form method="post" onSubmit={this.handleFormSubmit}>
 							<div className="card-header">
 								<div className="text-center">
 									<div className="row">

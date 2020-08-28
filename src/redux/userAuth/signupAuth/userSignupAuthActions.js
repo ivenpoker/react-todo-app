@@ -31,15 +31,39 @@ const signUserUp = (username, password) => {
 		// Create new user with name and password only if
 		// there isn't any user with same name already
 
-		const storedUsername = window.localStorage.getItem("username");
+		const mainUsersDB = window.localStorage.getItem("users_db");
+		if (mainUsersDB) {
+			const mainUsersDBObj = JSON.parse(mainUsersDB);
 
-		if (!storedUsername) {
-			window.localStorage.setItem("username", username);
-			window.localStorage.setItem("password", password);
+			// Check to see if there is a user with that name already
+			if (mainUsersDBObj.coreData.length > 0 &&
+				mainUsersDBObj.coreData.some((user) => user.username === username)) {
 
-			dispatch(successHelper(USER_SIGNUP_SUCCESS));
+				dispatch(failureHelper(USER_SIGNUP_FAILURE, "username already taken"));
+			} else {
+				const newUser = {
+					username: username,
+					password: password,
+					todos: []
+				};
+
+				// Add new user to 'database'
+				mainUsersDBObj.coreData = [...mainUsersDBObj.coreData, newUser];
+				window.localStorage.setItem("users_db", JSON.stringify(mainUsersDBObj));
+
+				dispatch(successHelper(USER_SIGNUP_SUCCESS));
+			}
 		} else {
-			dispatch(failureHelper(USER_SIGNUP_FAILURE, "username already taken"));
+			const newMainUsersSB = {
+				coreData: [
+					// {
+					// 	username: username,
+					// 	password: password,
+					// 	todos: []
+					// }
+				]
+			}
+			window.localStorage.setItem("users_db", JSON.stringify(newMainUsersSB));
 		}
 	}
 }

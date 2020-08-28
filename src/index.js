@@ -8,11 +8,15 @@ import "popper.js/dist/popper.min";
 import "bootstrap/dist/js/bootstrap.min";
 import "spinkit/spinkit.min.css";
 import "./styles/index.css"
+import {Provider} from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
-	<React.StrictMode>
-		<App />
-	</React.StrictMode>,
+	<Provider store={store}>
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>
+	</Provider>,
 	document.getElementById('root')
 );
 
