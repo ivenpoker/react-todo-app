@@ -32,14 +32,11 @@ export const loginUser = (username, password) => {
 		const storedUsername = window.localStorage.getItem("username");
 		const storedPassword = window.localStorage.getItem("password");
 
-		window.setTimeout(() => {
-			if (storedUsername === username &&
-				storedPassword === password) {
-				dispatch(successHelper(LOGIN_USER_SUCCESS, username))
-			} else {
-				dispatch(failureHelper(LOGIN_USER_FAILURE, "Incorrect username and/or password"));
-			}
-		}, 5000);
-
+		if (storedUsername === username &&
+			storedPassword === password) {
+			dispatch(successHelper(LOGIN_USER_SUCCESS, username))
+		} else {
+			dispatch(failureHelper(LOGIN_USER_FAILURE, "Incorrect username and/or password"));
+		}
 	}
 }

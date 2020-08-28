@@ -22,7 +22,9 @@ const loginReducer = createReducer(initialState, {
 			...prevState,
 			userLogin: {
 				...prevState.userLogin,
-				isAuthenticating: true
+				isAuthenticating: true,
+				authenticated: false,
+				error: null
 			}
 		}),
 
@@ -34,7 +36,7 @@ const loginReducer = createReducer(initialState, {
 				username: payload,
 				isAuthenticating: false,
 				authenticated: true,
-				error: true
+				error: null
 			}
 		}),
 
@@ -44,6 +46,7 @@ const loginReducer = createReducer(initialState, {
 			userLogin: {
 				...prevState.userLogin,
 				isAuthenticating: false,
+				authenticated: false,
 				error: payload
 			}
 		})

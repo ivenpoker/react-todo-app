@@ -9,6 +9,7 @@ import {
 const initialState = {
 	userSignup: {
 		isSigningUp: false,
+		done: false,
 		error: null
 	}
 }
@@ -21,6 +22,8 @@ const signUpReducer = createReducer(initialState, {
 			userSignup: {
 				...prevState.userSignup,
 				isSigningUp: true,
+				done: false,
+				error: null
 			}
 		}),
 
@@ -30,6 +33,7 @@ const signUpReducer = createReducer(initialState, {
 			userSignup: {
 				...prevState.userSignup,
 				isSigningUp: false,
+				done: true,
 				error: null
 			}
 		}),
@@ -40,6 +44,7 @@ const signUpReducer = createReducer(initialState, {
 			userSignup: {
 				...prevState.userSignup,
 				isSigningUp: false,
+				done: false,
 				error: payload
 			}
 		})

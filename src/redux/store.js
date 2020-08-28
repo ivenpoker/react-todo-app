@@ -10,6 +10,15 @@ const rootReducer = combineReducers({
 	signup: signUpReducer
 })
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+let store = null;
+
+// Apply the 'composeWithDevTools' only in development environment and not
+// production environment.
+
+if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+	store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
+} else {
+	store = createStore(rootReducer, applyMiddleware(thunk));
+}
 
 export default store;
