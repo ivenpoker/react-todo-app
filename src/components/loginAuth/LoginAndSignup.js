@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import appIcon from "../../images/icons/icons8-list-64.png";
 import personIcon from "../../images/icons/icons8-person-100.png";
-import {Button, Modal} from "react-bootstrap";
 import {loginUser} from "../../redux";
 import signUserUp from "../../redux/userAuth/signupAuth/userSignupAuthActions";
 import {connect} from "react-redux";
