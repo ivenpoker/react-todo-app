@@ -20,7 +20,7 @@ class App extends Component {
 			<Fragment>
 				{
 					this.props.userLogin.authenticated ? (
-						<Home/>
+						<Home user={this.props.userLogin.user}/>
 					) : (
 						<LoginAndSignup/>
 					)

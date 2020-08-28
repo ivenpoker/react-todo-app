@@ -29,3 +29,8 @@
         opacity: 1;
     }
 }
+
+/* DROP DOWNS BACKGROUND COLOR */
+
+.navbar-nav > li > .dropdown-menu { background-color: #FF0000; }
+
