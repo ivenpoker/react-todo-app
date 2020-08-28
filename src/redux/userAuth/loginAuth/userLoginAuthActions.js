@@ -22,15 +22,30 @@ const successHelper = (reqType, args) => ({
 	payload: args
 });
 
+
 // ############### ACTION CREATORS ##############
+
+export const autoLoginUser = (username) => {
+	return (dispatch) => {
+		const prev_username = window.localStorage.getItem("prev_username");
+		if (prev_username) {
+			const mainUserDBObj = JSON.parse(window.localStorage.getItem("users_db"));
+			const user = mainUserDBObj.coreData.filter((user) => username === user.username);
+
+			if (user.length > 0 && user[0].username === prev_username) {
+				dispatch(requestHelper(LOGIN_USER_REQUEST))
+				dispatch(successHelper(LOGIN_USER_SUCCESS, user[0]))
+
+			} else {
+				// dispatch(failureHelper(LOGIN_USER_FAILURE))
+			}
+		}
+	}
+}
 
 export const loginUser = (username, password) => {
 	return (dispatch) => {
 		dispatch(requestHelper(LOGIN_USER_REQUEST));
-
-		// Use in browser local storage authentication
-		const storedUsername = window.localStorage.getItem("username");
-		const storedPassword = window.localStorage.getItem("password");
 
 		const mainUsersDB = window.localStorage.getItem("users_db");
 
@@ -46,6 +61,7 @@ export const loginUser = (username, password) => {
 			// that of the user.
 
 			if (user.length > 0 && user[0].password === password) {
+				window.localStorage.setItem("prev_username", username);
 				dispatch(successHelper(LOGIN_USER_SUCCESS, user[0]))
 			} else {
 				dispatch(failureHelper(LOGIN_USER_FAILURE, "Incorrect username and/or password"));

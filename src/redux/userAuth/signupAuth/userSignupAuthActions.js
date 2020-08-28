@@ -24,7 +24,7 @@ const successHelper = (reqType, args) => ({
 
 // HIGHER ACTION CREATORS FOR SIGNUP
 
-const signUserUp = (username, password) => {
+export const signUserUp = (username, password) => {
 	return (dispatch) => {
 		dispatch(requestHelper(USER_SIGNUP_REQUEST));
 
@@ -64,9 +64,7 @@ const signUserUp = (username, password) => {
 				]
 			}
 			window.localStorage.setItem("users_db", JSON.stringify(newMainUsersSB));
+			dispatch(failureHelper(USER_SIGNUP_FAILURE, "Signup failure. Try again"));
 		}
 	}
 }
-
-
-export default signUserUp;
