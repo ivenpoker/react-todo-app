@@ -85,7 +85,7 @@ class Navbar extends Component {
 										<button className="dropdown-item" type="button">Account</button>
 										<button className="dropdown-item" type="button">Settings</button>
 										<div className="dropdown-divider"/>
-										<button className="dropdown-item" type="button" id="logoutBtn">
+										<button className="dropdown-item font-weight-bold" type="button" id="logoutBtn">
 											Sign out
 										</button>
 									</div>
