@@ -1,4 +1,6 @@
 
+import {v4} from "uuid";
+
 import {
 	USER_SIGNUP_REQUEST,
 	USER_SIGNUP_SUCCESS,
@@ -44,7 +46,8 @@ export const signUserUp = (username, password) => {
 				const newUser = {
 					username: username,
 					password: password,
-					todos: []
+					todos: [],
+					id: v4()
 				};
 
 				// Add new user to 'database'
