@@ -34,3 +34,21 @@
 
 .navbar-nav > li > .dropdown-menu { background-color: #FF0000; }
 
+/* ADD TASK BUTTON */
+
+/*.feedBackButton {*/
+/*    background-color : #31B0D5;*/
+/*    color: white;*/
+/*    padding: 10px 20px;*/
+/*    border-radius: 4px;*/
+/*    border-color: #46b8da;*/
+/*    margin-bottom: 1em;*/
+/*}*/
+
+.feedBackButton {
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
+    margin-bottom: 1em;
+}
+

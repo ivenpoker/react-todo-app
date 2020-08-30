@@ -32,7 +32,7 @@ class Navbar extends Component {
 			// Register logout click event to log user out.
 			// Tried using react 'onClick' ... but didn't work.
 
-			$("button#logoutBtn").click(function (evt) {
+			$("a#logoutBtn").click(function (evt) {
 				self.handleLogUserOut();
 			})
 		})
@@ -63,15 +63,12 @@ class Navbar extends Component {
 									<a className="nav-link" href="#">Organize</a>
 								</li>
 								<li className="nav-item">
-									<a className="nav-link" href="#">Organize</a>
-								</li>
-								<li className="nav-item">
 									<a className="nav-link" href="#">Futurize</a>
 								</li>
 							</ul>
-							<div className="mr-4">
-								<input className="form-control form-control-sm" placeholder="Enter search query ...."/>
-							</div>
+							{/*<div className="mr-4">*/}
+							{/*	<input className="form-control form-control-sm" placeholder="Enter search query ...."/>*/}
+							{/*</div>*/}
 							<div className="dropdown show">
 								<button className="btn p-0 dropdown-toggle" role="button"
 										id="dropdownMenuLink" data-toggle="dropdown"
@@ -82,12 +79,13 @@ class Navbar extends Component {
 										 style={imgCssStyles}
 									/>
 									<div className="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-										<button className="dropdown-item" type="button">Account</button>
-										<button className="dropdown-item" type="button">Settings</button>
+										<a className="dropdown-item" type="button">Account</a>
+										<a className="dropdown-item" type="button">Settings</a>
 										<div className="dropdown-divider"/>
-										<button className="dropdown-item font-weight-bold" type="button" id="logoutBtn">
+										<a className="dropdown-item font-weight-bold" type="button" id="logoutBtn"
+											onClick={this.handleLogUserOut}>
 											Sign out
-										</button>
+										</a>
 									</div>
 								</button>
 							</div>
