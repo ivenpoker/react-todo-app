@@ -4,10 +4,12 @@ import loginReducer from "./userAuth/loginAuth/userLoginAuthReducer";
 import signUpReducer from "./userAuth/signupAuth/userSignupAuthReducer";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import taskManagementReducer from "./tasksManagement/taskManagementReducer";
 
 const rootReducer = combineReducers({
 	login: loginReducer,
-	signup: signUpReducer
+	signup: signUpReducer,
+	taskManagement: taskManagementReducer
 })
 
 let store = null;
