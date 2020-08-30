@@ -5,6 +5,7 @@ import Navbar from "./sub-comps/Navbar";
 import $ from "jquery";
 import LeftSectionView from "./sub-comps/LeftSectionView";
 import RightSectionView from "./sub-comps/RightSectionView";
+import AddTaskModalContainer from "./ModalsHOC/AddTaskModalHoc";
 
 class Home extends Component {
 
@@ -38,15 +39,18 @@ class Home extends Component {
 				</div>
 				<div className="container">
 					<div className="row">
-						<div className="col-sm-4">
-							<LeftSectionView/>
+						<div className="col-sm-4 mb-2">
+							<LeftSectionView showAddTaskModal={this.props.showAddTaskModal}/>
 						</div>
 						<div className="col-sm-8">
 							<RightSectionView user={user}/>
 						</div>
 					</div>
 					<div className="feedBackButton">
-						<button className="btn btn-outline-light btn-sm">Send Feedback</button>
+						<button className="btn text-white btn-sm"
+								style={{backgroundColor: "#000000"}}>
+							Report a problem
+						</button>
 					</div>
 				</div>
 			</Fragment>
@@ -58,4 +62,7 @@ Home.propTypes = {
 	user: PropTypes.object.isRequired
 };
 
-export default Home;
+// Add functionality to show 'add task' modal to the home component
+let WrappedHome = AddTaskModalContainer(Home);
+
+export default WrappedHome;

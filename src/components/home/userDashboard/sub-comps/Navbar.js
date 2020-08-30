@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 import $ from "jquery"
 
 const DEFAULT_USER_PROFILE_PIC_URL =
-	"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+	"https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500";
+const NOTIFICATION_ICON_LINK = "https://img.icons8.com/small/2x/appointment-reminders.png";
 
 const imgCssStyles = {
 	top: 0,
@@ -70,6 +71,12 @@ class Navbar extends Component {
 							{/*	<input className="form-control form-control-sm" placeholder="Enter search query ...."/>*/}
 							{/*</div>*/}
 							<div className="dropdown show">
+								<img src={NOTIFICATION_ICON_LINK}
+									 className="img-fluid mr-3"
+									 width={30}
+									 height={25}
+									 style={{cursor: "pointer"}}
+								/>
 								<button className="btn p-0 dropdown-toggle" role="button"
 										id="dropdownMenuLink" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">
