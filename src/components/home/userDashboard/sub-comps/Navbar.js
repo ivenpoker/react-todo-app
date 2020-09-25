@@ -13,8 +13,8 @@ const imgCssStyles = {
 	backgroundSize: 'cover',
 	backgroundRepeat: 'no-repeat',
 	backgroundPosition: 'center',
-	width: 35,
-	height: 35,
+	width: 30,
+	height: 30,
 	cursor: "pointer",
 }
 
@@ -44,7 +44,7 @@ class Navbar extends Component {
 		return (
 			<Fragment>
 				<div className="">
-					<nav className="navbar navbar-expand-md navbar-light bg-light">
+					<nav className="navbar navbar-expand-md navbar-dark" style={{backgroundColor: "#000000"}}>
 						<a className="navbar-brand font-weight-bold" href="/">
 							TaskGrind
 						</a>
@@ -71,12 +71,12 @@ class Navbar extends Component {
 							{/*	<input className="form-control form-control-sm" placeholder="Enter search query ...."/>*/}
 							{/*</div>*/}
 							<div className="dropdown show">
-								<img src={NOTIFICATION_ICON_LINK}
-									 className="img-fluid mr-3"
-									 width={30}
-									 height={25}
-									 style={{cursor: "pointer"}}
-								/>
+								{/*<img src={NOTIFICATION_ICON_LINK}*/}
+								{/*	 className="img-fluid mr-3"*/}
+								{/*	 width={30}*/}
+								{/*	 height={25}*/}
+								{/*	 style={{cursor: "pointer"}}*/}
+								{/*/>*/}
 								<button className="btn p-0 dropdown-toggle" role="button"
 										id="dropdownMenuLink" data-toggle="dropdown"
 										aria-haspopup="true" aria-expanded="false">
