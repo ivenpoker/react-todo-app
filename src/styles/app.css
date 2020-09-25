@@ -1,4 +1,14 @@
 
+/* HELPER CSS VALUES */
+
+.br-8 {
+    border-radius: 8px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
 /* LOGIN AND SIGNUP ANIMATION */
 
 .loginAndSignupZoomIn {
@@ -45,10 +55,18 @@
 
 /* ANIMATION FOR ADDING TASKS AND THE SEARCH FUNCTIONALITIES */
 
-.elem-zoom {
+.elem-zoom-out {
     transition: transform .2s;
 }
 
-.elem-zoom:hover {
+.elem-zoom-out:hover {
     transform: scale(1.1);
+}
+
+.elem-zoom-in {
+    transition: transform .2s;
+}
+
+.elem-zoom-in:hover {
+    transform: scale(0.95);
 }

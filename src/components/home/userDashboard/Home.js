@@ -43,7 +43,7 @@ class Home extends Component {
 						<div className="row">
 							<div className="col-2"/>
 							<div className="col-8">
-								<input type="text" id="searchInput" className="form-control p-4 font-weight-bold text-center shadow elem-zoom"
+								<input type="text" id="searchInput" className="form-control p-4 font-weight-bold text-center shadow elem-zoom-out"
 									   placeholder="Search tasks, descriptions, names, dates etc ..." style={{fontSize: "+5"}}/>
 							</div>
 							<div className="col-2"/>
