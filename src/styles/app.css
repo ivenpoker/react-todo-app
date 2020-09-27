@@ -9,6 +9,13 @@
     cursor: pointer;
 }
 
+.no-border-outline:focus {
+    outline: none 0 !important;
+    border-color: dimgrey;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
 /* LOGIN AND SIGNUP ANIMATION */
 
 .loginAndSignupZoomIn {

@@ -110,7 +110,7 @@ const AddTaskModalContainer = (ChildComponent) =>
 															(source URL)</span> will be your sole
 															responsibility.
 														</div>
-														<textarea className="form-control form-control-sm mb-2"
+														<textarea className="no-border-outline form-control form-control-sm mb-2"
 																  placeholder="Past the URL of the picture here ..."
 																  style={{width: "100%", height:"10rem"}}
 																  value={this.state.backgroundTaskImage.imageURL}
@@ -176,10 +176,10 @@ const AddTaskModalContainer = (ChildComponent) =>
 										</div>
 										<div className="col-sm-8">
 											<form className="form-group">
-												<input className="form-control form-control-sm" placeholder="Enter task name"/>
-												<input className="form-control form-control-sm mt-2" placeholder="Who owns this task?"/>
-												<textarea className="form-control form-control-sm mt-2" placeholder="Add task description"
-														  style={{width: "100%", height: "6em"}}/>
+												<input className="no-border-outline form-control form-control-sm" placeholder="Enter task name"/>
+												<input className="no-border-outline form-control form-control-sm mt-2" placeholder="Who owns this task?"/>
+												<textarea className="no-border-outline form-control form-control-sm mt-2" placeholder="Add task description"
+														  style={{width: "100%", height: "8.5em"}}/>
 											</form>
 										</div>
 									</div>
