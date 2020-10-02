@@ -4,6 +4,8 @@ import personIcon from "../../images/icons/icons8-person-100.png";
 import {loginUser, signUserUp} from "../../redux";
 import {connect} from "react-redux";
 import $ from "jquery";
+import "bootstrap-social/bootstrap-social.css";
+import "font-awesome/css/font-awesome.css"
 
 // This is a HOC for Signing up for new 'account' for the application.
 const SignupModalContainer = (ChildComponent) =>
@@ -147,11 +149,18 @@ const SignupModalContainer = (ChildComponent) =>
 											</div>
 										</div>
 									</div>
-									<div className="p-3 bg-dark text-white-50">
+									<div className="p-3 bg-dark text-white">
 										<div className="text-center small">
 											<span>github: </span>
 											<a href="https://github.com/ivenpoker" className="link text-white">ivenpoker</a>
 											<span style={{borderLeft: "1px solid grey", marginLeft: 4}}> @{(new Date()).getFullYear()}</span>
+											<br/>
+											<a className="btn btn-social-icon btn-github"
+											   	href="https://github.com/ivenpoker"
+												ref="noreferrer"
+											>
+												<li className="fa fa-github-alt"/>
+											</a>
 										</div>
 									</div>
 								</div>
@@ -220,19 +229,22 @@ class LoginAndSignup extends Component {
 	}
 
 	componentDidMount() {
-		console.log("LOGIN PROPS:", this.props)
+		// console.log("LOGIN PROPS:", this.props)
 	}
 
 	render() {
 		return (
 			<Fragment>
-				<div className="jumbotron jumbotron-fluid bg-dark text-white">
+				<div className="jumbotron jumbotron-fluid body-bg text-white-50 p-3 mt-3">
 					<div className="container">
 						<div className="row">
 							<div className="col-sm-12 text-center">
-								<img className="shadow img-fluid" alt="Todo App Icon" src={appIcon}/>
+								<img className="shadow img-fluid bg-dark" alt="Todo App Icon" src={appIcon}/>
 								<h5 className="mt-4">
-									<kbd className="p-2 shadow">TODO TASK MANAGEMENT APP</kbd>
+									<kbd className="p-2 shadow">
+										<span className="fa fa-code fa-lg mr-2"/>
+										TASK GRIND
+									</kbd>
 								</h5>
 							</div>
 						</div>
@@ -240,9 +252,9 @@ class LoginAndSignup extends Component {
 				</div>
 				<div className="loginAndSignupZoomIn">
 
-					<div className="card border-dark shadow-lg m-auto ml-2 mr-2 bg-dark text-white mb-3" style={{maxWidth: "30rem", borderRadius: 15}}>
+					<div className="card border-white one-edge-shadow m-auto ml-2 mr-2 bg-white text-white mb-3 br-8 mt-0" style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form method="post" onSubmit={this.handleFormSubmit}>
-							<div className="card-header">
+							<div className="card-header bg-dark">
 								<div className="text-center">
 									<div className="row">
 										<div className="col-sm-12">
@@ -265,21 +277,21 @@ class LoginAndSignup extends Component {
 									) : null
 								}
 							</div>
-							<div className="card-body">
+							<div className="card-body mt-2 mb-2">
 								{
 									this.state.userLoginData.errorMessage ? (
 										<div className="alert alert-warning text-center font-weight-bold">
 											{this.state.userLoginData.errorMessage}
 										</div>
 									) : this.props.userLogin.error ? (
-										<div className="alert alert-danger text-center font-weight-bold">
+										<div className="alert alert-secondary text-center font-weight-bold">
 											{this.props.userLogin.error}
 										</div>
 									) : null
 								}
 								<div className="row">
 									<div className="col-sm-12">
-										<input type="text" className="form-control form-control text-center p-3 shadow"
+										<input type="text" className="form-control form-control no-border-outline text-center p-3 shadow"
 											   placeholder="username"
 											   name="username"
 											   required="required"
@@ -288,7 +300,7 @@ class LoginAndSignup extends Component {
 										/>
 									</div>
 									<div className="col-sm-12 mt-2">
-										<input type="password" className="form-control form-control text-center p-3 shadow"
+										<input type="password" className="form-control form-control no-border-outline text-center p-3 shadow"
 											   placeholder="password"
 											   name="password"
 											   required="required"
@@ -302,12 +314,12 @@ class LoginAndSignup extends Component {
 							<div className="card-footer">
 								<div className="row">
 									<div className="col-sm-6 mb-2">
-										<button type="submit" className="btn btn-block btn-light shadow">
+										<button type="submit" className="btn btn-block btn-outline-dark p-2 shadow">
 											Log in
 										</button>
 									</div>
 									<div className="col-sm-6">
-										<button type="button" className="btn btn-block btn-outline-light shadow"
+										<button type="button" className="btn btn-block btn-outline-dark p-2 shadow"
 												onClick={this.handleSignUpClick}>
 											Sign up
 										</button>
@@ -315,15 +327,33 @@ class LoginAndSignup extends Component {
 								</div>
 								<hr/>
 								<div className="text-center">
-									<a href='/' className="link text-white-50 small">Forgot password</a>
+									<a href='/' className="link text-dark small">Forgot password</a>
 								</div>
-								<div className="p-1 mt-3 text-center bg-secondary shadow" style={{borderRadius: 8}}>
-									<span className="small card-title">gitHub:</span>
-									<a className="ml-2 link text-dark small card-title" href="https://github.com/ivenpoker"
-									   rel="noopener noreferrer" target="_blank">@ivenpoker</a>
-									<div className="card-subtitle mt-1">
-										@{(new Date()).getFullYear()}
-									</div>
+								<div className="p-4 mt-3 text-center bg-dark shadow" style={{borderRadius: 8}}>
+									<a className="btn btn-social-icon btn-github bg-white text-dark"
+									   href="https://github.com/ivenpoker"
+									   target="_blank"
+									   rel="noopener noreferrer">
+										<li className="fa fa-github-alt fa-lg"/>
+									</a>
+									<a className="btn btn-social-icon btn-facebook bg-white text-dark ml-3"
+										href="https://www.facebook.com/happi.yvan/"
+										target="_blank"
+										rel="noopener noreferrer">
+										<li className="fa fa-facebook "/>
+									</a>
+									<a className="btn btn-social-icon btn-linkedin bg-white text-dark ml-3"
+										href="https://www.linkedin.com/in/happi-yvan-712289128/"
+										target="_blank"
+										rel="noopener noreferrer">
+										<li className="fa fa-linkedin "/>
+									</a>
+									<a className="btn btn-social-icon btn-twitter bg-white text-dark ml-3"
+										href="https://twitter.com/ivenpoker"
+										target="_blank"
+										rel="noopener noreferrer">
+										<li className="fa fa-twitter"/>
+									</a>
 								</div>
 							</div>
 						</form>

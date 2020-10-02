@@ -5,6 +5,10 @@
     border-radius: 8px;
 }
 
+.br-0 {
+    border-radius: 0;
+}
+
 .clickable {
     cursor: pointer;
 }
@@ -76,4 +80,10 @@
 
 .elem-zoom-in:hover {
     transform: scale(0.95);
+}
+
+.one-edge-shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+    -moz-box-shadow: 0 8px 6px -6px black;
+    box-shadow: 0 8px 6px -6px black;
 }

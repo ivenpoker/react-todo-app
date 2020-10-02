@@ -21,7 +21,7 @@ class RightSectionView extends Component {
 			<Fragment>
 				{
 					todos && todos.length === 0 ? (
-						<div className="alert alert-dark border-light text-center font-weight-bold">
+						<div className="alert alert-dark text-center font-weight-bold one-edge-shadow">
 							{"No task(s) present for the moment".toUpperCase()}
 							<br/>
 							<span className="small">Please consider adding some <kbd>tasks</kbd></span>

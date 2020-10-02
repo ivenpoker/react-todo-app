@@ -7,6 +7,7 @@ import {
 import {createReducer} from "../utils";
 
 const initialState = {
+	tasks: [],
 	taskAdd: {
 		isAdding: false,
 		done: false,

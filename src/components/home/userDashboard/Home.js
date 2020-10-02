@@ -5,7 +5,7 @@ import Navbar from "./sub-comps/Navbar";
 import $ from "jquery";
 import LeftSectionView from "./sub-comps/LeftSectionView";
 import RightSectionView from "./sub-comps/RightSectionView";
-import AddTaskModalContainer from "./ModalsHOC/AddTaskModalHoc";
+import AddTaskModalContainer from "./ModalsHOC/AddTaskModal";
 
 class Home extends Component {
 
@@ -13,8 +13,9 @@ class Home extends Component {
 	componentDidMount() {
 		const {user} = this.props;
 		if (user) {
-			console.log("user:", user);
+			// console.log("user:", user);
 		}
+		console.log("HOME MOUNT:", user);
 		$(function () {
 			$('[data-toggle="popover"]').popover();
 			$("div#main-jumb").css({
@@ -60,7 +61,7 @@ class Home extends Component {
 						</div>
 					</div>
 					<div className="feedBackButton">
-						<button className="btn text-white btn-sm"
+						<button className="btn text-white btn-sm one-edge-shadow"
 								style={{backgroundColor: "#000000"}}>
 							Report a problem
 						</button>
