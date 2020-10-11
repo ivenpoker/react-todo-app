@@ -27,9 +27,10 @@ const taskManagementReducer = createReducer(initialState, {
 			}
 		}),
 
-	[USER_ADD_NEW_TASK_SUCCESS]: (prevState) =>
+	[USER_ADD_NEW_TASK_SUCCESS]: (prevState, payload) =>
 		Object.assign({}, prevState, {
 			...prevState,
+			tasks: [payload, ...prevState.tasks],
 			taskAdd: {
 				...prevState.taskAdd,
 				isAdding: false,

@@ -103,11 +103,12 @@ const SignupModalContainer = (ChildComponent) =>
 														</div>
 													</div>
 												) : this.props.userSignup.error ? (
-													<div className="alert shadow-sm alert-warning text-center font-weight-bold">
+													<div className="alert shadow alert-warning text-center font-weight-bold">
+														<span className="fa fa-warning mr-2"/>
 														{this.props.userSignup.error}
 													</div>
 												) : this.props.userSignup.done ? (
-													<div className="alert shadow-sm alert-success text-center font-weight-bold">
+													<div className="alert shadow alert-success text-center font-weight-bold">
 														Account set up, just sign in now.
 													</div>
 												) : null
@@ -157,7 +158,6 @@ const SignupModalContainer = (ChildComponent) =>
 											<br/>
 											<a className="btn btn-social-icon btn-github"
 											   	href="https://github.com/ivenpoker"
-												ref="noreferrer"
 											>
 												<li className="fa fa-github-alt"/>
 											</a>
@@ -252,7 +252,8 @@ class LoginAndSignup extends Component {
 				</div>
 				<div className="loginAndSignupZoomIn">
 
-					<div className="card border-white one-edge-shadow m-auto ml-2 mr-2 bg-white text-white mb-3 br-8 mt-0" style={{maxWidth: "30rem", borderRadius: 15}}>
+					<div className="card border-white one-edge-shadow m-auto ml-2 mr-2 bg-white text-white mb-3 br-8 mt-0"
+						 style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form method="post" onSubmit={this.handleFormSubmit}>
 							<div className="card-header bg-dark">
 								<div className="text-center">
@@ -280,11 +281,13 @@ class LoginAndSignup extends Component {
 							<div className="card-body mt-2 mb-2">
 								{
 									this.state.userLoginData.errorMessage ? (
-										<div className="alert alert-warning text-center font-weight-bold">
+										<div className="alert alert-warning text-center font-weight-bold shadow">
+											<span className="fa fa-ban fa-lg"/>
 											{this.state.userLoginData.errorMessage}
 										</div>
 									) : this.props.userLogin.error ? (
-										<div className="alert alert-secondary text-center font-weight-bold">
+										<div className="alert alert-warning text-center font-weight-bold shadow">
+											<span className="fa fa-warning fa-lg mr-2"/>
 											{this.props.userLogin.error}
 										</div>
 									) : null

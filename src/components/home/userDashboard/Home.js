@@ -5,9 +5,16 @@ import Navbar from "./sub-comps/Navbar";
 import $ from "jquery";
 import LeftSectionView from "./sub-comps/LeftSectionView";
 import RightSectionView from "./sub-comps/RightSectionView";
-import AddTaskModalContainer from "./ModalsHOC/AddTaskModal";
+import AddTaskModal from "./ModalsHOC/AddTaskModal";
 
 class Home extends Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			userTodos: [],
+		}
+	}
 
 
 	componentDidMount() {
@@ -15,7 +22,7 @@ class Home extends Component {
 		if (user) {
 			// console.log("user:", user);
 		}
-		console.log("HOME MOUNT:", user);
+		console.log("HOME MOUNT:", this.props);
 		$(function () {
 			$('[data-toggle="popover"]').popover();
 			$("div#main-jumb").css({
@@ -31,7 +38,13 @@ class Home extends Component {
 			}).on("mouseleave", function () {
 				$(this).css({opacity: 0.5})
 			}).css({opacity: 0.5})
-		})
+		});
+
+		this.setState((prevState => ({
+			...prevState,
+			userTodos: [...this.props.user.todos]
+		})));
+
 	}
 
 	render() {
@@ -57,7 +70,7 @@ class Home extends Component {
 							<LeftSectionView showAddTaskModal={this.props.showAddTaskModal}/>
 						</div>
 						<div className="col-sm-8">
-							<RightSectionView user={user}/>
+							<RightSectionView userTodos={this.state.userTodos}/>
 						</div>
 					</div>
 					<div className="feedBackButton">
@@ -77,6 +90,10 @@ Home.propTypes = {
 };
 
 // Add functionality to show 'add task' modal to the home component
-let WrappedHome = AddTaskModalContainer(Home);
+let WrappedHome = AddTaskModal(Home);
+
+const mapStateToProps = (state) => ({
+
+})
 
 export default WrappedHome;

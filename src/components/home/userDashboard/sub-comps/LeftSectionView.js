@@ -1,7 +1,6 @@
-
-import React, {Component, Fragment} from "react"
+import React, {Component} from "react";
 import PropTypes from "prop-types";
-import "font-awesome/css/font-awesome.css"
+import "font-awesome/css/font-awesome.css";
 
 class LeftSectionView extends Component {
 
@@ -11,7 +10,7 @@ class LeftSectionView extends Component {
 
 	render() {
 		return (
-			<Fragment>
+			<div className="sticky-top-10">
 				<div className="mb-3">
 					<div className="row">
 						<div className="col-sm-6 mb-2">
@@ -31,7 +30,7 @@ class LeftSectionView extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="list-group one-edge-shadow">
+				<div className="list-group shadow">
 					<a href="#" className="list-group-item list-group-item-action flex-column align-items-start text-white"
 					   style={{backgroundColor: "#000000"}}>
 						<div className="d-flex w-100 justify-content-between">
@@ -61,7 +60,7 @@ class LeftSectionView extends Component {
 						<small className="text-muted">Donec id elit non mi porta.</small>
 					</a>
 				</div>
-			</Fragment>
+			</div>
 		);
 	}
 }

@@ -24,16 +24,18 @@ const successHelper = (reqType, args) => ({
 
 // ################## ACTION CREATORS ##################
 
-export const createNewTask = (userId, taskName, taskDescription, taskId, taskStatus) => {
+export const createNewTask = (userId, taskName, taskDescription, taskId, taskStatus, owners, imgURL) => {
 	return (dispatch) => {
 
-		dispatch(USER_ADD_NEW_TASK_REQUEST);
+		dispatch(requestHelper(USER_ADD_NEW_TASK_REQUEST));
 
 		const newTaskObj = {
 			"id": taskId,
 			"name": taskName,
 			"description": taskDescription,
-			"status": taskStatus
+			"status": taskStatus,
+			"imgURL": imgURL,
+			"owners": [...owners]
 		}
 		const mainUserDB = window.localStorage.getItem("users_db");
 		if (!mainUserDB) {
@@ -44,9 +46,9 @@ export const createNewTask = (userId, taskName, taskDescription, taskId, taskSta
 			window.localStorage.removeItem("prev_username");
 
 			// trigger page refresh, will cause user to be logged out.
-			window.location = "/";
+			document.location.reload();
 
-			dispatch(USER_ADD_NEW_TASK_FAILURE);
+			dispatch(failureHelper(USER_ADD_NEW_TASK_FAILURE));
 		} else {
 			let mainUserDBObj = JSON.parse(mainUserDB);
 
@@ -58,15 +60,15 @@ export const createNewTask = (userId, taskName, taskDescription, taskId, taskSta
 				window.localStorage.removeItem("prev_username");
 
 				// trigger page refresh, will cause user to be logged out.
-				window.location = "";
+				document.location.reload();
 
-				dispatch(USER_ADD_NEW_TASK_FAILURE);
+				dispatch(failureHelper(USER_ADD_NEW_TASK_FAILURE));
 			}
 
 			// Find user and add new task to his her list of tasks
-			mainUserDBObj = mainUserDBObj.coreData.map((user) => {
+			mainUserDBObj.coreData = mainUserDBObj.coreData.map((user) => {
 				if (user.id === userId) {
-					user.todos = [...user.todos, newTaskObj];
+					user.todos = [newTaskObj, ...user.todos];
 				}
 				return user;
 			});
@@ -74,7 +76,9 @@ export const createNewTask = (userId, taskName, taskDescription, taskId, taskSta
 			// Save data to reflect new state
 			window.localStorage.setItem("users_db", JSON.stringify(mainUserDBObj));
 
-			dispatch(USER_ADD_NEW_TASK_SUCCESS);
+			dispatch(requestHelper(USER_ADD_NEW_TASK_SUCCESS, newTaskObj));
 		}
 	}
 }
+
+export default createNewTask;

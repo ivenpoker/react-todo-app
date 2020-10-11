@@ -64,7 +64,7 @@ export const loginUser = (username, password) => {
 				window.localStorage.setItem("prev_username", username);
 				dispatch(successHelper(LOGIN_USER_SUCCESS, user[0]))
 			} else {
-				dispatch(failureHelper(LOGIN_USER_FAILURE, "Incorrect username and/or password"));
+				dispatch(failureHelper(LOGIN_USER_FAILURE, "Invalid credentials"));
 			}
 
 		} else {
@@ -80,7 +80,7 @@ export const loginUser = (username, password) => {
 				]
 			}
 			window.localStorage.setItem("users_db", JSON.stringify(newMainUsersSB));
-			dispatch(failureHelper(LOGIN_USER_FAILURE, "Incorrect username and/or password"));
+			dispatch(failureHelper(LOGIN_USER_FAILURE, "Invalid credentials"));
 		}
 	}
 }
