@@ -1,8 +1,9 @@
 import React, {Component, Fragment} from 'react';
-import LoginAndSignup from "./components/loginAuth/LoginAndSignup";
 import {connect} from "react-redux";
 import {autoLoginUser} from "./redux";
 import Home from "./components/home/userDashboard/Home";
+import MainLoginSignUpAuth from "./components/loginAuth/MainLoginSignUpAuth";
+import RootPage from "./components/root/RootPage";
 
 
 class App extends Component {
@@ -18,11 +19,12 @@ class App extends Component {
 	render() {
 		return (
 			<Fragment>
+				{/*<RootPage/>*/}
 				{
 					this.props.userLogin.authenticated ? (
 						<Home user={this.props.userLogin.user}/>
 					) : (
-						<LoginAndSignup/>
+						<MainLoginSignUpAuth/>
 					)
 				}
 			</Fragment>

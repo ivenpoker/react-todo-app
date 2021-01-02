@@ -1,11 +1,13 @@
 import React, {Component, Fragment} from 'react';
-import appIcon from "../../images/icons/icons8-list-64.png";
 import personIcon from "../../images/icons/icons8-person-100.png";
 import {loginUser, signUserUp} from "../../redux";
+import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import $ from "jquery";
 import "bootstrap-social/bootstrap-social.css";
-import "font-awesome/css/font-awesome.css"
+import "font-awesome/css/font-awesome.css";
+import LogoComp from "./sub-comp/LogoComp";
+
 
 // This is a HOC for Signing up for new 'account' for the application.
 const SignupModalContainer = (ChildComponent) =>
@@ -173,7 +175,7 @@ const SignupModalContainer = (ChildComponent) =>
 		}
 	}
 
-class LoginAndSignup extends Component {
+class Login extends Component {
 
 	constructor(props) {
 		super(props);
@@ -208,6 +210,7 @@ class LoginAndSignup extends Component {
 	// Trigger signup modal when user clicks the sign up button
 	handleSignUpClick = () => {
 		this.props.showModal();
+		// this.props.switchToSignupView();
 	};
 
 	handleFormSubmit = (evt) => {
@@ -229,30 +232,17 @@ class LoginAndSignup extends Component {
 	}
 
 	componentDidMount() {
-		// console.log("LOGIN PROPS:", this.props)
+		console.log("LOGIN PROPS:", this.props)
 	}
 
 	render() {
 		return (
 			<Fragment>
-				<div className="jumbotron jumbotron-fluid body-bg text-white-50 p-3 mt-3">
-					<div className="container">
-						<div className="row">
-							<div className="col-sm-12 text-center">
-								<img className="shadow img-fluid bg-dark" alt="Todo App Icon" src={appIcon}/>
-								<h5 className="mt-4">
-									<kbd className="p-2 shadow">
-										<span className="fa fa-code fa-lg mr-2"/>
-										TASK GRIND
-									</kbd>
-								</h5>
-							</div>
-						</div>
-					</div>
-				</div>
+				<LogoComp/>
+
 				<div className="loginAndSignupZoomIn">
 
-					<div className="card border-white one-edge-shadow m-auto ml-2 mr-2 bg-white text-white mb-3 br-8 mt-0"
+					<div className="card border-white shadow-lg m-auto ml-2 mr-2 bg-white text-white mb-3 br-8 mt-0"
 						 style={{maxWidth: "30rem", borderRadius: 15}}>
 						<form method="post" onSubmit={this.handleFormSubmit}>
 							<div className="card-header bg-dark">
@@ -333,25 +323,25 @@ class LoginAndSignup extends Component {
 									<a href='/' className="link text-dark small">Forgot password</a>
 								</div>
 								<div className="p-4 mt-3 text-center bg-dark shadow" style={{borderRadius: 8}}>
-									<a className="btn btn-social-icon btn-github bg-white text-dark"
+									<a className="btn btn-social-icon btn-github bg-white text-dark elem-zoom-out"
 									   href="https://github.com/ivenpoker"
 									   target="_blank"
 									   rel="noopener noreferrer">
 										<li className="fa fa-github-alt fa-lg"/>
 									</a>
-									<a className="btn btn-social-icon btn-facebook bg-white text-dark ml-3"
+									<a className="btn btn-social-icon btn-facebook bg-white text-dark ml-3 elem-zoom-out"
 										href="https://www.facebook.com/happi.yvan/"
 										target="_blank"
 										rel="noopener noreferrer">
 										<li className="fa fa-facebook "/>
 									</a>
-									<a className="btn btn-social-icon btn-linkedin bg-white text-dark ml-3"
+									<a className="btn btn-social-icon btn-linkedin bg-white text-dark ml-3 elem-zoom-out"
 										href="https://www.linkedin.com/in/happi-yvan-712289128/"
 										target="_blank"
 										rel="noopener noreferrer">
 										<li className="fa fa-linkedin "/>
 									</a>
-									<a className="btn btn-social-icon btn-twitter bg-white text-dark ml-3"
+									<a className="btn btn-social-icon btn-twitter bg-white text-dark ml-3 elem-zoom-out"
 										href="https://twitter.com/ivenpoker"
 										target="_blank"
 										rel="noopener noreferrer">
@@ -379,4 +369,10 @@ const mapDispatchToProps = (dispatch) => ({
 	signUserUp: (username, password) => dispatch(signUserUp(username, password))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignupModalContainer(LoginAndSignup));
+Login.propTypes = {
+	switchToSignupView: PropTypes.func.isRequired
+}
+
+const composedLogin = SignupModalContainer(Login);
+
+export default connect(mapStateToProps, mapDispatchToProps)(composedLogin);

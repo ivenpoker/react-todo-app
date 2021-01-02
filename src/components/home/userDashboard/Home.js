@@ -66,10 +66,10 @@ class Home extends Component {
 				</div>
 				<div className="container">
 					<div className="row">
-						<div className="col-sm-4 mb-2">
+						<div className="col-sm-12 mb-2">
 							<LeftSectionView showAddTaskModal={this.props.showAddTaskModal}/>
 						</div>
-						<div className="col-sm-8">
+						<div className="col-sm-12">
 							<RightSectionView userTodos={this.state.userTodos}/>
 						</div>
 					</div>

@@ -1,6 +1,22 @@
 
 /* HELPER CSS VALUES */
 
+.root-page-jumbotron {
+    height: 400px;
+}
+
+.bg-black {
+    background: #000000;
+}
+
+.backdrop-modal {
+    opacity: 0.2;
+}
+
+.full-width {
+    width: 100%;
+}
+
 .br-8 {
     border-radius: 8px 8px 8px 8px;
 }
